@@ -37,11 +37,11 @@ public class MainActivity extends AppCompatActivity {
         this.imei = Settings.Secure.getString(this.getApplicationContext().getContentResolver(), Settings.Secure.ANDROID_ID);
         MainActivity.staticImei = Settings.Secure.getString(this.getApplicationContext().getContentResolver(), Settings.Secure.ANDROID_ID);
 
-        this.fieldCopyUsingJNI();
+        String output = this.fieldCopyUsingJNI();
 
         TextView tv = binding.sampleText;
-        tv.setText(this.notImei + " " + MainActivity.staticNotImei);
+        tv.setText(output + " " + this.notImei + " " + MainActivity.staticNotImei);
     }
 
-    public native void fieldCopyUsingJNI();
+    public native String fieldCopyUsingJNI();
 }

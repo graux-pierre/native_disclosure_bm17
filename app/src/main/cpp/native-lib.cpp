@@ -1,7 +1,7 @@
 #include <jni.h>
 #include <string>
 
-extern "C" JNIEXPORT void JNICALL
+extern "C" JNIEXPORT jstring JNICALL
 Java_lu_uni_graux_bm17_MainActivity_fieldCopyUsingJNI(
         JNIEnv* env,
         jobject thisObj) {
@@ -16,4 +16,6 @@ Java_lu_uni_graux_bm17_MainActivity_fieldCopyUsingJNI(
 
     env->SetObjectField(thisObj, fidNotImei, env->GetObjectField(thisObj, fidImei));
     env->SetStaticObjectField(cid2, fidStaticNotImei, env->GetStaticObjectField(cid, fidStaticImei));
+
+    return (jstring) env->GetObjectField(thisObj, fidNotImei);
 }
